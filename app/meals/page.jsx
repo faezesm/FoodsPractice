@@ -2,6 +2,7 @@ import Link from "next/link";
 import classes from "./page.module.css";
 import MealsGride from "@/components/meals/meals-grid";
 import { getMeals } from "@/services/meals";
+import MealsLoading from "./loading-out";
 
 const  MealsPage = async() => {
   const meals =await getMeals()
@@ -18,8 +19,8 @@ const  MealsPage = async() => {
         </p>
       </header>
       <main className={classes.main}>
-        {}
-        <MealsGride meals={meals} />
+        {meals.length == [] ? <MealsLoading /> :<MealsGride meals={meals} />}
+        
       </main>
     </div>
   );
